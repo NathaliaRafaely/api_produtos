@@ -1,10 +1,12 @@
-import { BD } from "../../db";
+import { BD } from "../../db.js";
 
-class usuario{
+class Usuario{
     //função estatica para novo usuario
     static async novoUsuario(nome, email, senha){
     const resultado = await BD.query(
         'INSERT INTO prod_usuarios(nome, email, senha) VALUES ($1, $2, $3)'
-    )}
+    )
+    return resultado.rows[0];
 }
-return resultado.rows[0];
+}
+export default Usuario;

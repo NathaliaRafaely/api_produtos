@@ -1,9 +1,21 @@
+import cors from 'cors'
 import express from 'express'
+import bodyParser from 'body-parser'
 import {testarConexao} from './db.js'
+import router from './src/routes/usuarioRoutes.js';
+import Produtosrouter from './src/routes/produtoRoutes.js';
+
 
 const app = express(); //Criar intancia do express
 
 testarConexao();
+app.use(cors());
+//Uso do body-parser para receber os valores do corpo na resquisição json
+app.use(bodyParser.json());
+//Definir as rotas 
+app.use(router);
+app.use(Produtosrouter);
+
 
 const porta = 3000
 app.listen(porta, () => {

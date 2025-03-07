@@ -4,8 +4,16 @@ import dotenv from 'dotenv';
 const { Pool } = pkg;
 dotenv.config()
 
+// const BD = new Pool({
+//     connectionString: process.env.DATABASE_URL
+// })
+
 const BD = new Pool({
-    connectionString: process.env.DATABASE_URL
+    user: 'postgres', 
+    host: 'localhost',
+    database:'bd_produtos',
+    password: 'admin',
+    port: 5432,
 })
 
 const testarConexao = async () => {
