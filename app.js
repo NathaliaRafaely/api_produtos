@@ -4,6 +4,7 @@ import bodyParser from 'body-parser'
 import {testarConexao} from './db.js'
 import router from './src/routes/usuarioRoutes.js';
 import Produtosrouter from './src/routes/produtoRoutes.js';
+import UsuarioController from './src/controllers/usuarioController.js';
 
 
 const app = express(); //Criar intancia do express
@@ -15,6 +16,9 @@ app.use(bodyParser.json());
 //Definir as rotas 
 app.use(router);
 app.use(Produtosrouter);
+
+app.get('./usuarios/listar', UsuarioController.listar)
+app.delete('./usuarios/deletar/:id', UsuarioController.deletar)
 
 
 const porta = 3000

@@ -1,4 +1,5 @@
 import Produtos from '../models/produtos.js'
+import { BD } from '../../db.js';
 
 class ProdutosController{
     static async novoProduto(req, res){
@@ -12,6 +13,16 @@ class ProdutosController{
         } catch(error){
             console.log('Errro ao criar o produto', error);
             res.status(500).json({message:'Erro ao criar produto', error: error.message})
+        }
+    }
+
+    static async listarTodos(req, res){
+        try{
+            const produtos = await BD.query('SELECT * FROM prod_produtos');
+            res.status(200).json(produto);
+        } catch(error){
+            res.status(500).json({message:
+                'Erro ao listar os produtos', error: error.message})
         }
     }
 }

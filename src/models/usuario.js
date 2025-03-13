@@ -8,5 +8,9 @@ class Usuario{
     )
     return resultado.rows[0];
 }
+static async listar(){
+    const resultado = await BD.query('SELECT * FROM prod_usuarios');
+    return resultado.rows;
+}
 }
 export default Usuario;

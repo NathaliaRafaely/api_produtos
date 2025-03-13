@@ -7,6 +7,10 @@ class Produtos{
         )
         return resultado.rows[0];
     }
+static async listarTodos(){
+    const resultado = await BD.query('SELECT * FROM prod_produtos');
+    return resultado.rows;
+}
 }
 
 export default Produtos;
