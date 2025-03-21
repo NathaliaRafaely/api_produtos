@@ -48,3 +48,5 @@ const porta = 3000
 app.listen(porta, () => {
     console.log(`Api rodando na porta http://localhost:${porta}`);
 })
+
+export default App
