@@ -20,8 +20,8 @@ class UsuarioController {
     //Função para listar todos os usuarios
     static async listar(req, res){
         try{
-            const usuarios = await Usuario.listar();
-            res.status(200).json(usuarios);
+            const usuarios = await BD.query('SELECT * FROM prod_usuarios');
+            res.status(200).json(usuarios.rows);
         }catch(error){
             res.status(500).json({message:
                 'Erro ao listar os usuarios', error: error.message})

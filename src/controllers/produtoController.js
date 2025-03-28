@@ -3,7 +3,7 @@ import { BD } from '../../db.js';
 
 class ProdutosController{
     static async novoProduto(req, res){
-        const{nome, preco, imagem, link_produto, categoria, frete_gratis} = req.body;
+        const{nome, preco, imagem, link_produto, categoria, frete_gratis, id} = req.body;
 
         if(!nome || !preco || !imagem || !link_produto || !categoria ){
             return res.status(400).json({message: 'Nome, Preco, imagem, Link e Categoria são obrigatorios'})
@@ -20,8 +20,8 @@ class ProdutosController{
 
     static async listarTodos(req, res){
         try{
-            const produtos = await Produtos.listar();
-            res.status(200).json(produtos);
+            const produtos = await BD.query('SELECT * FROM prod_produto');
+            res.status(200).json(produtos.rows);
         }catch(error){
             res.status(500).json({message:
                 'Erro ao listar os produtos', error: error.message})

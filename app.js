@@ -19,6 +19,10 @@ app.use(bodyParser.json());
 // app.use(Produtosrouter);
 // app.use(Usuariorouter);
 
+app.get('/', (req, res) => {
+    res.send('API Funcionando')
+})
+
 app.post('/usuarios', UsuarioController.novoUsuario);
 app.get('/usuarios', UsuarioController.listar);
 app.get('./usuarios/listar', UsuarioController.listar);
@@ -49,4 +53,4 @@ app.listen(porta, () => {
     console.log(`Api rodando na porta http://localhost:${porta}`);
 })
 
-export default App
+export default app;
